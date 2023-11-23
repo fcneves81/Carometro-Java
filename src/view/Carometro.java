@@ -100,6 +100,7 @@ public class Carometro extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Carometro.class.getResource("/img/icone.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 640, 360);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -147,12 +148,7 @@ public class Carometro extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		txtNome = new JTextField();
-		txtNome.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				listarNomes();
-			}
-		});
+		
 		txtNome.setBounds(65, 59, 273, 23);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
@@ -209,7 +205,18 @@ public class Carometro extends JFrame {
 		btnBuscar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnBuscar.setBounds(161, 22, 80, 23);
 		contentPane.add(btnBuscar);
-		setLocationRelativeTo(null);
+		
+		// SCROLLPANE + JLIST
+		JScrollPane scrollPaneLista = new JScrollPane();
+		scrollPaneLista.setVisible(false);
+		scrollPaneLista.setBounds(65, 81, 273, 78);
+		contentPane.add(scrollPaneLista);
+		
+		JList listNomes = new JList();
+		scrollPaneLista.setViewportView(listNomes);
+		
+		
+		// FIM SCROLLPANE + LIST
 	}
 
 	private void status() {
@@ -314,9 +321,14 @@ public class Carometro extends JFrame {
 		}
 	}
 	
+	
+	// 	METODO LISTAR NOMES
+	/*
 	private void listarNomes() {
-		
+		scrollPaneLista.setVisible(true);
 	}
+	*/
+	// 	FIM METODO LISTAR NOMES
 	
 	private void resetar() {
 		txtRA.setText(null);
